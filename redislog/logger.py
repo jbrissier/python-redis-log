@@ -7,18 +7,18 @@ import logging
 def levelAsString(level):
     return {logging.DEBUG: 'debug',
             logging.INFO: 'info',
-            logging.WARNING: 'warning', 
-            logging.ERROR: 'error', 
-            logging.CRITICAL: 'critical', 
+            logging.WARNING: 'warning',
+            logging.ERROR: 'error',
+            logging.CRITICAL: 'critical',
             logging.FATAL: 'fatal'}.get(level, 'unknown')
 
 def _getCallingContext():
     """
     Utility function for the RedisLogRecord.
 
-    Returns the module, function, and lineno of the function 
-    that called the logger.  
- 
+    Returns the module, function, and lineno of the function
+    that called the logger.
+
     We look way up in the stack.  The stack at this point is:
     [0] logger.py _getCallingContext (hey, that's me!)
     [1] logger.py __init__
@@ -41,7 +41,7 @@ def _getCallingContext():
         funcname = context[3]
     else:
         funcname = ""
-        
+
     # python docs say you don't want references to
     # frames lying around.  Bad things can happen.
     del context
